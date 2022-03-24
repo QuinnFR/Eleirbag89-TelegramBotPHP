@@ -108,7 +108,7 @@ if (!is_null($text) && !is_null($chat_id)) {
         $telegram->sendMessage($content);
     } elseif ($text == '/img') {
         // Load a local file to upload. If is already on Telegram's Servers just pass the resource id
-        $img = curl_file_create('test.png', 'image/png');
+        $img = 'AgACAgQAAxkBAAEIZnBiPMYmt_KOumM1t09ITNaauTTLxAACpb0xG8KAaFFx8xqGPEroJgEAAwIAA3gAAyME';
         $content = ['chat_id' => $chat_id, 'photo' => $img];
         $telegram->sendPhoto($content);
         //Download the file just sended
