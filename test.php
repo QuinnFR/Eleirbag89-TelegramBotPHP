@@ -29,17 +29,6 @@ if ($text == '/start') {
     $content = ['chat_id' => $chat_id, 'reply_markup' => $keyb, 'text' => "Welcome to CowBot \xF0\x9F\x90\xAE \nPlease type /cowsay or click the Cow button !"];
     $telegram->sendMessage($content);
 }
-if ($text == '/cowsay' || $text == "\xF0\x9F\x90\xAE") {
-    $randstring = rand().sha1(time());
-    $cowurl = 'http://bangame.altervista.org/cowsay/fortune_image_w.php?preview='.$randstring;
-    $content = ['chat_id' => $chat_id, 'text' => $cowurl];
-    $telegram->sendMessage($content);
-}
-if ($text == '/credit' || $text == 'Credit') {
-    $reply = "Eleirbag89 Telegram PHP API http://telegrambot.ienadeprex.com \nFrancesco Laurita (for the cowsay script) http://francesco-laurita.info/wordpress/fortune-cowsay-on-php-5";
-    $content = ['chat_id' => $chat_id, 'text' => $reply];
-    $telegram->sendMessage($content);
-}
 
 if ($text == '/git' || $text == 'Git') {
     $reply = 'Check me on GitHub: https://github.com/Eleirbag89/TelegramBotPHP';
@@ -111,10 +100,6 @@ if (!is_null($text) && !is_null($chat_id)) {
         $img = 'AgACAgQAAxkBAAEIZnBiPMYmt_KOumM1t09ITNaauTTLxAACpb0xG8KAaFFx8xqGPEroJgEAAwIAA3gAAyME';
         $content = ['chat_id' => $chat_id, 'photo' => $img];
         $telegram->sendPhoto($content);
-        //Download the file just sended
-        $file_id = $message['photo'][0]['file_id'];
-        $file = $telegram->getFile($file_id);
-        $telegram->downloadFile($file['result']['file_path'], './test_download.png');
     } elseif ($text == '/where') {
         // Send the Catania's coordinate
         $content = ['chat_id' => $chat_id, 'latitude' => '37.5', 'longitude' => '15.1'];
